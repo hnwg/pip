@@ -1,0 +1,1 @@
+Speed up startup by importing ``rich.traceback`` only when ``--debug`` is used.

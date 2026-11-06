@@ -13,7 +13,6 @@ from collections.abc import Callable, Iterator
 from optparse import Values
 
 from pip._vendor.rich import reconfigure
-from pip._vendor.rich import traceback as rich_traceback
 
 from pip._internal.cli import cmdoptions
 from pip._internal.cli.command_context import CommandContextMixIn
@@ -103,6 +102,8 @@ class Command(CommandContextMixIn):
                 return self.run(options, args)
 
         if options.debug_mode:
+            from pip._vendor.rich import traceback as rich_traceback
+
             rich_traceback.install(show_locals=True)
             return _inner_run()
 
